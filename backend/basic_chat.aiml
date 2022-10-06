@@ -37,24 +37,79 @@
         ПРОЙТИ ТЕСТ МОГУ ЛИ Я СТАТЬ САМОЗАНЯТЫМ
         </that>
         <template>
-            Перейти к регистрации или посмотреть подборку материалов для самозанятых?
+            Перейти к регистрации, посмотреть подборку материалов для самозанятых, или ответы на вопросы о самозанятости?
         </template>
     </category>
 
     <category>
-        <pattern>* МАТЕРИАЛАМ</pattern>
+        <pattern>МАТЕРИАЛ</pattern>
         <that>
-        * К РЕГИСТРАЦИИ ИЛИ ПОСМОТРЕТЬ ПОДБОРКУ МАТЕРИАЛОВ ДЛЯ САМОЗАНЯТЫХ
+        * К РЕГИСТРАЦИИ *
         </that>
         <template>
-            <srai>К ПОДБОРКЕ ДОКУМЕНТОВ</srai>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* МАТЕРИАЛ</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>МАТЕРИАЛ *</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* МАТЕРИАЛ *</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
         </template>
     </category>
 
+
     <category>
-        <pattern>* РЕГИСТРАЦИИ</pattern>
+        <pattern>РЕГИСТРАЦИЯ</pattern>
         <that>
-        * К РЕГИСТРАЦИИ ИЛИ ПОСМОТРЕТЬ ПОДБОРКУ МАТЕРИАЛОВ ДЛЯ САМОЗАНЯТЫХ
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            Регистрация через ФНС
+        </template>
+    </category>
+    <category>
+        <pattern>* РЕГИСТРАЦИЯ</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            Регистрация через ФНС
+        </template>
+    </category>
+    <category>
+        <pattern>РЕГИСТРАЦИЯ *</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            Регистрация через ФНС
+        </template>
+    </category>
+    <category>
+        <pattern>* РЕГИСТРАЦИЯ *</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
         </that>
         <template>
             Регистрация через ФНС
@@ -63,11 +118,55 @@
 
     
     <category>
-        <pattern>* ВОПРОСАМ</pattern>
+        <pattern>ВОПРОС</pattern>
         <template>
             Справочный материал
         </template>
     </category>
+    <category>
+        <pattern>* ВОПРОС</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>ВОПРОС *</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ВОПРОС *</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ОТВЕТ</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ОТВЕТ</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>ОТВЕТ *</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ОТВЕТ *</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+
 
     <category>
         <pattern>НЕТ</pattern>   <!-- после удачного прохождения теста -->
@@ -79,12 +178,58 @@
         </template>
     </category>
 
+
     <category>
-        <pattern>* ПОДБОРКЕ ДОКУМЕНТОВ</pattern>
+        <pattern>ДОКУМЕНТ</pattern>
         <template>
             Подборка проектов договоров для самозанятых
+            Вопросы для определения сферы деятельности ...
         </template>
     </category>
+    <category>
+        <pattern>* ДОКУМЕНТ</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern> ДОКУМЕНТ *</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ДОКУМЕНТ *</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ПРОЕКТ</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ПРОЕКТ</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>ПРОЕКТ *</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ПРОЕКТ *</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+
 
 
     <!-- ТЕСТ НАЧИНАЕТСЯ ТУТ -->
@@ -99,6 +244,33 @@
             1. Сколько вам лет?
         </template>
     </category>    
+    <category>
+        <pattern>* ЗАНОВО</pattern>
+        <that>
+        * ПРОЙТИ ТЕСТ ЗАНОВО ИЛИ ВЕРНУТЬСЯ К НАЧАЛУ БОТА
+        </that>
+        <template>
+            1. Сколько вам лет?
+        </template>
+    </category>  
+    <category>
+        <pattern>ЗАНОВО *</pattern>
+        <that>
+        * ПРОЙТИ ТЕСТ ЗАНОВО ИЛИ ВЕРНУТЬСЯ К НАЧАЛУ БОТА
+        </that>
+        <template>
+            1. Сколько вам лет?
+        </template>
+    </category>  
+    <category>
+        <pattern>* ЗАНОВО *</pattern>
+        <that>
+        * ПРОЙТИ ТЕСТ ЗАНОВО ИЛИ ВЕРНУТЬСЯ К НАЧАЛУ БОТА
+        </that>
+        <template>
+            1. Сколько вам лет?
+        </template>
+    </category>  
 
     <category>
         <pattern>ДА</pattern>
@@ -111,7 +283,7 @@
     </category>
 
     <category>
-        <pattern>МНЕ МЕНЬШЕ 14 ЛЕТ</pattern>
+        <pattern>Я МАЛЕНЬКИЙ 14 ГОД</pattern>
         <that>
         1 СКОЛЬКО ВАМ ЛЕТ
         </that>
@@ -122,7 +294,7 @@
     </category>
 
     <category>
-        <pattern>МНЕ ОТ 14 ДО 18 ЛЕТ</pattern>
+        <pattern>Я ОТ 14 ДО 18 ГОД</pattern>
         <that>
         1 СКОЛЬКО ВАМ ЛЕТ
         </that>
@@ -133,7 +305,7 @@
     </category>
 
     <category>
-        <pattern>МНЕ 18 ЛЕТ ИЛИ БОЛЬШЕ</pattern>
+        <pattern>Я 18 ГОД ИЛИ БОЛЬШОЙ</pattern>
         <that>
         1 СКОЛЬКО ВАМ ЛЕТ
         </that>
@@ -299,10 +471,25 @@
     </category>
 
     <category>
-        <pattern>К НАЧАЛУ</pattern>
-        <that>
-        * ПРОЙТИ ТЕСТ ЗАНОВО ИЛИ ВЕРНУТЬСЯ К НАЧАЛУ БОТА
-        </that>
+        <pattern>НАЧАЛО</pattern>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>    
+    <category>
+        <pattern>* НАЧАЛО</pattern>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>   
+    <category>
+        <pattern>НАЧАЛО *</pattern>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>     
+    <category>
+        <pattern>* НАЧАЛО *</pattern>
         <template>
             <srai>START</srai>
         </template>
@@ -315,7 +502,7 @@
             Извините, я не понимаю ваш ответ. Можете повторить?
         </template>
     </category>
-
+   
 
 
 </aiml>
