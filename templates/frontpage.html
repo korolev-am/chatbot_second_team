@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome | {% endblock %}
+
+{% block content %}
+<div class="p-2 lg:p-3 text-center">
+    <h1 class="text-2xl lg:text-4xl text-white">CHAT-BOT</h1>
+</div>
+
+<div class="lg:w-2/4 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
+    <div class="chat-messages" id="chat-messages">
+        {% for m in messages %}{{ m.text }}<br>{% endfor %}
+    </div>
+</div>
+
+<div class="lg:w-2/4 mt-6 mx-4 lg:mx-auto p-4 bg-white rounded-xl">
+<!--    ЗДЕСЬ МЕНЯТЬ ФОРМУ-->
+    {% if is_buttons == True %}
+        <form method="post" action="" class="text-center">
+            {% csrf_token %}
+            {% for but in buttons %}
+                <button type="submit" name="{{ but.name }}" class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700"
+                        id="{{ but.name }}">{{ but.text }}</button>
+            {% endfor %}
+        </form>
+    {% endif %}
+    <div class="show-field">
+        <input type="button" class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700"  id="show-field" value="Показать текстовое поле ввода"/>
+    </div>
+    <div id="buttons">
+        <form method="post" action="" class="flex">
+            {% csrf_token %}
+            <input type="text" name="content" class="flex-1 mr-3" placeholder="Введите своё сообщение..." id="chat-message-input">
+            <button class="px-5 py-3 rounded-xl text-white bg-teal-600 hover:bg-teal-700" id="bot-submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    var scrollDiv = document.getElementById("chat-messages");
+    scrollDiv.scrollTo(0, scrollDiv.scrollHeight);
+
+    var is_field = "{{is_field}}";
+    if (is_field == 1) {
+        document.getElementById('buttons').style.display = '';
+        document.getElementById('show-field').style.display = 'none';
+    } else {
+        document.getElementById('buttons').style.display = 'none';
+        document.getElementById('show-field').style.display = '';
+    }
+    document.getElementById('show-field').onclick = function() {
+        document.getElementById('buttons').style.display = '';
+        document.getElementById('show-field').style.display = 'none';
+    }
+</script>
+{% endblock %}

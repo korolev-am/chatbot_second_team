@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}{% endblock %}ChatBot</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <style>
+            .chat-messages {
+                height: 300px;
+                overflow-y: auto;
+            }
+            .show-field {
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body class="bg-teal-600">
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

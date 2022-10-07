@@ -1,0 +1,692 @@
+<aiml version="1.0.1" encoding="UTF-8">
+<!-- basic_chat_developed.aiml -->
+
+    <category>
+        <pattern>START</pattern>
+        <template>
+        2; Привет! Знаю все о самозанятых и подбираю документы для самостоятельного ведения дела!
+        Вы зарегистрированы в качестве самозанятого?
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЧАТЬ</pattern>
+        <template>
+        2; Привет! Знаю все о самозанятых и подбираю документы для самостоятельного ведения дела!
+        Вы зарегистрированы в качестве самозанятого?
+        </template>
+    </category>
+
+    <category>
+        <pattern>ДА</pattern>
+        <that>
+        2 ПРИВЕТ ЗНАЮ ВСЕ О САМОЗАНЯТЫХ И ПОДБИРАЮ ДОКУМЕНТЫ ДЛЯ САМОСТОЯТЕЛЬНОГО ВЕДЕНИЯ ДЕЛА
+        ВЫ ЗАРЕГИСТРИРОВАНЫ В КАЧЕСТВЕ САМОЗАНЯТОГО
+        </that>
+        <template>
+            3; Хотите посмотреть ответы на вопросы о самозанятости или о проектах документов?
+        </template>
+    </category>
+
+    <category>
+        <pattern>ОТВЕТ НА ВОПРОС О САМОЗАНЯТОЙ</pattern>
+        <that>
+        3 ХОТИТЕ ПОСМОТРЕТЬ ОТВЕТЫ НА ВОПРОСЫ О САМОЗАНЯТОСТИ ИЛИ О ПРОЕКТАХ ДОКУМЕНТОВ
+        </that>
+        <template>
+            5; Справочный материал
+        </template>
+    </category>
+
+    <category>
+        <pattern>ПРОЕКТ ДОКУМЕНТ</pattern>
+        <that>
+        3 ХОТИТЕ ПОСМОТРЕТЬ ОТВЕТЫ НА ВОПРОСЫ О САМОЗАНЯТОСТИ ИЛИ О ПРОЕКТАХ ДОКУМЕНТОВ
+        </that>
+        <template>
+            4;  Подборка проектов договоров для самозанятых
+        </template>
+    </category>
+
+    <!-- ПОДБОРКА ДОКУМЕНТОВ -->
+    <category>
+        <pattern>ВАРИАНТ 1</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        4 ПОДБОРКА ПРОЕКТОВ ДОГОВОРОВ ДЛЯ САМОЗАНЯТЫХ
+        </that>
+        <template>
+            11; Вариант 1
+        </template>
+    </category>
+
+    <category>
+        <pattern>ВАРИАНТ 2</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        4 ПОДБОРКА ПРОЕКТОВ ДОГОВОРОВ ДЛЯ САМОЗАНЯТЫХ
+        </that>
+        <template>
+            16; Вариант 2
+        </template>
+    </category>
+
+    <category>
+        <pattern>ВАРИАНТ 3</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        4 ПОДБОРКА ПРОЕКТОВ ДОГОВОРОВ ДЛЯ САМОЗАНЯТЫХ
+        </that>
+        <template>
+            21; Вариант 3
+        </template>
+    </category>
+
+    <category>
+        <pattern>ДРУГОЙ</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        4 ПОДБОРКА ПРОЕКТОВ ДОГОВОРОВ ДЛЯ САМОЗАНЯТЫХ
+        </that>
+        <template>
+            26; нет документов для этого вида
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЗАД1</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        11 ВАРИАНТ 1
+        </that>
+        <template>
+            <srai>4 ПОДБОРКА ПРОЕКТОВ ДОГОВОРОВ ДЛЯ САМОЗАНЯТЫХ</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЧАЛО</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        11 ВАРИАНТ 1
+        </that>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЗАД1</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        16 ВАРИАНТ 2
+        </that>
+        <template>
+            <srai>4 ПОДБОРКА ПРОЕКТОВ ДОГОВОРОВ ДЛЯ САМОЗАНЯТЫХ</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЧАЛО</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        16 ВАРИАНТ 2
+        </that>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЗАД1</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        21 ВАРИАНТ 3
+        </that>
+        <template>
+            <srai>4 ПОДБОРКА ПРОЕКТОВ ДОГОВОРОВ ДЛЯ САМОЗАНЯТЫХ</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЧАЛО</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        21 ВАРИАНТ 3
+        </that>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЗАД1</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        26 НЕТ ДОКУМЕНТОВ ДЛЯ ЭТОГО ВИДА
+        </that>
+        <template>
+            <srai>4 ПОДБОРКА ПРОЕКТОВ ДОГОВОРОВ ДЛЯ САМОЗАНЯТЫХ</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЧАЛО</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        * НЕТ ДОКУМЕНТОВ ДЛЯ ЭТОГО ВИДА ДЕЯТЕЛЬНОСТИ
+        </that>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+
+
+
+
+
+
+    <category>
+        <pattern>НЕТ</pattern>
+        <that>
+        2 ПРИВЕТ ЗНАЮ ВСЕ О САМОЗАНЯТЫХ И ПОДБИРАЮ ДОКУМЕНТЫ ДЛЯ САМОСТОЯТЕЛЬНОГО ВЕДЕНИЯ ДЕЛА
+        ВЫ ЗАРЕГИСТРИРОВАНЫ В КАЧЕСТВЕ САМОЗАНЯТОГО
+        </that>
+        <template>
+            30; Пройти тест "могу ли я стать самозанятым?"
+        </template>
+    </category>
+
+
+
+    <category>
+        <pattern>НЕТ</pattern>
+        <that>
+        30 ПРОЙТИ ТЕСТ МОГУ ЛИ Я СТАТЬ САМОЗАНЯТЫМ
+        </that>
+        <template>
+            61; Перейти к регистрации, посмотреть подборку материалов для самозанятых, или ответы на вопросы о самозанятости?
+        </template>
+    </category>
+
+    <category>
+        <pattern>ДА</pattern>
+        <that>
+        2 ПРИВЕТ ЗНАЮ ВСЕ О САМОЗАНЯТЫХ И ПОДБИРАЮ ДОКУМЕНТЫ ДЛЯ САМОСТОЯТЕЛЬНОГО ВЕДЕНИЯ ДЕЛА
+        ВЫ ЗАРЕГИСТРИРОВАНЫ В КАЧЕСТВЕ САМОЗАНЯТОГО
+        </that>
+        <template>
+            3; Хотите посмотреть ответы на вопросы о самозанятости или о проектах документов?
+        </template>
+    </category>
+
+    <category>
+        <pattern>МАТЕРИАЛ</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* МАТЕРИАЛ</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>МАТЕРИАЛ *</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* МАТЕРИАЛ *</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>РЕГИСТРАЦИЯ</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            62; Регистрация через ФНС
+        </template>
+    </category>
+    <category>
+        <pattern>* РЕГИСТРАЦИЯ</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            62; Регистрация через ФНС
+        </template>
+    </category>
+    <category>
+        <pattern>РЕГИСТРАЦИЯ *</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            62; Регистрация через ФНС
+        </template>
+    </category>
+    <category>
+        <pattern>* РЕГИСТРАЦИЯ *</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            62; Регистрация через ФНС
+        </template>
+    </category>
+<!--    для кнопки-->
+    <category>
+        <pattern>К РЕГИСТРАЦИИ</pattern>
+        <that>
+        * К РЕГИСТРАЦИИ *
+        </that>
+        <template>
+            62; Регистрация через ФНС
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>ВОПРОС</pattern>
+        <template>
+            5; Справочный материал
+        </template>
+    </category>
+<!--    кнопки-->
+    <category>
+        <pattern>К ВОПРОС</pattern>
+        <template>
+            5; Справочный материал
+        </template>
+    </category>
+    <category>
+        <pattern>* ВОПРОС</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>ВОПРОС *</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ВОПРОС *</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ОТВЕТ</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ОТВЕТ</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>ОТВЕТ *</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ОТВЕТ *</pattern>
+        <template>
+            <srai>ВОПРОС</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>НЕТ</pattern>   <!-- после удачного прохождения теста -->
+        <that>
+        * ОТВЕТЫ НА ВОПРОСЫ О САМОЗАНЯТОСТИ ИЛИ О ПРОЕКТАХ ДОКУМЕНТОВ
+        </that>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>ДОКУМЕНТ</pattern>
+        <template>
+            4; Подборка проектов договоров для самозанятых
+        </template>
+    </category>
+    <category>
+        <pattern>* ДОКУМЕНТ</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern> ДОКУМЕНТ *</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ДОКУМЕНТ *</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ПРОЕКТ</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ПРОЕКТ</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>ПРОЕКТ *</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* ПРОЕКТ *</pattern>
+        <template>
+            <srai>ДОКУМЕНТ</srai>
+        </template>
+    </category>
+
+
+
+
+    <!-- ТЕСТ НАЧИНАЕТСЯ ТУТ -->
+
+
+    <category>
+        <pattern>ЗАНОВО</pattern>
+        <that>
+        * ПРОЙТИ ТЕСТ ЗАНОВО ИЛИ ВЕРНУТЬСЯ К НАЧАЛУ БОТА
+        </that>
+        <template>
+            31; 1. Сколько вам лет?
+        </template>
+    </category>
+    <category>
+        <pattern>* ЗАНОВО</pattern>
+        <that>
+        * ПРОЙТИ ТЕСТ ЗАНОВО ИЛИ ВЕРНУТЬСЯ К НАЧАЛУ БОТА
+        </that>
+        <template>
+            31; 1. Сколько вам лет?
+        </template>
+    </category>
+    <category>
+        <pattern>ЗАНОВО *</pattern>
+        <that>
+        * ПРОЙТИ ТЕСТ ЗАНОВО ИЛИ ВЕРНУТЬСЯ К НАЧАЛУ БОТА
+        </that>
+        <template>
+            31; 1. Сколько вам лет?
+        </template>
+    </category>
+    <category>
+        <pattern>* ЗАНОВО *</pattern>
+        <that>
+        * ПРОЙТИ ТЕСТ ЗАНОВО ИЛИ ВЕРНУТЬСЯ К НАЧАЛУ БОТА
+        </that>
+        <template>
+            31; 1. Сколько вам лет?
+        </template>
+    </category>
+
+    <category>
+        <pattern>ДА</pattern>
+        <that>
+        30 ПРОЙТИ ТЕСТ МОГУ ЛИ Я СТАТЬ САМОЗАНЯТЫМ
+        </that>
+        <template>
+            31; 1. Сколько вам лет?
+        </template>
+    </category>
+
+    <category>
+        <pattern>Я МАЛЕНЬКИЙ 14 ГОД</pattern>
+        <that>
+        31 1 СКОЛЬКО ВАМ ЛЕТ
+        </that>
+        <template>
+            34; Вы не можете осуществлять деятельность в качестве самозанятого.
+            <srai>END TEST</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>Я ОТ 14 ДО 18 ГОД</pattern>
+        <that>
+        31 1 СКОЛЬКО ВАМ ЛЕТ
+        </that>
+        <template>
+            33; Вы можете осуществлять деятельность в качестве самозанятого, если вы — дееспособный гражданин (например, после вступления в брак или эмансипации) или у вас есть письменное согласие родителей на осуществление деятельности.
+            2. Гражданином какой страны вы являетесь?
+        </template>
+    </category>
+
+    <category>
+        <pattern>Я 18 ГОД ИЛИ БОЛЬШОЙ</pattern>
+        <that>
+        31 1 СКОЛЬКО ВАМ ЛЕТ
+        </that>
+        <template>
+            32; 2. Гражданином какой страны вы являетесь?
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>TRUE</pattern>
+        <that>
+        * ГРАЖДАНИНОМ КАКОЙ СТРАНЫ ВЫ ЯВЛЯЕТЕСЬ
+        </that>
+        <template>
+            36; 3. На какой территории вы планируете осуществлять деятельность?
+        </template>
+    </category>
+
+    <category>
+        <pattern>FALSE</pattern>
+        <that>
+        * ГРАЖДАНИНОМ КАКОЙ СТРАНЫ ВЫ ЯВЛЯЕТЕСЬ
+        </that>
+        <template>
+            38; Вы не можете осуществлять деятельность в качестве самозанятого.
+            <srai>END TEST</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>РФ</pattern>
+        <that>
+        36 3 НА КАКОЙ ТЕРРИТОРИИ ВЫ ПЛАНИРУЕТЕ ОСУЩЕСТВЛЯТЬ ДЕЯТЕЛЬНОСТЬ
+        </that>
+        <template>
+            37; Обратите внимание, что в качестве самозанятого вы можете осуществлять деятельность только в пределах одного субъекта России.
+            4. Планируете ли вы осуществлять деятельность, приносящую доход?
+        </template>
+    </category>
+
+    <category>
+        <pattern>ЗАГРАНИЦЕЙ</pattern>
+        <that>
+        36 3 НА КАКОЙ ТЕРРИТОРИИ ВЫ ПЛАНИРУЕТЕ ОСУЩЕСТВЛЯТЬ ДЕЯТЕЛЬНОСТЬ
+        </that>
+        <template>
+            38; Вы не можете осуществлять деятельность в качестве самозанятого.
+            <srai>END TEST</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>ДА</pattern>
+        <that>
+        * 4 ПЛАНИРУЕТЕ ЛИ ВЫ ОСУЩЕСТВЛЯТЬ ДЕЯТЕЛЬНОСТЬ ПРИНОСЯЩУЮ ДОХОД
+        </that>
+        <template>
+            41; 5. Планируете ли вы быть работником или работодателем по трудовому договору?
+        </template>
+    </category>
+
+    <category>
+        <pattern>НЕТ</pattern>
+        <that>
+        * 4 ПЛАНИРУЕТЕ ЛИ ВЫ ОСУЩЕСТВЛЯТЬ ДЕЯТЕЛЬНОСТЬ ПРИНОСЯЩУЮ ДОХОД
+        </that>
+        <template>
+            40; Чтобы быть самозанятым, важно получать доход. Если вы не получаете доход от продажи товаров, выполнения работ, оказания услуг или реализации имущественных прав, вы не можете стать самозанятым.
+            <srai>END TEST</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>ДА</pattern>
+        <that>
+        41 5 ПЛАНИРУЕТЕ ЛИ ВЫ БЫТЬ РАБОТНИКОМ ИЛИ РАБОТОДАТЕЛЕМ ПО ТРУДОВОМУ ДОГОВОРУ
+        </that>
+        <template>
+            42; Вы не можете быть самозанятым, если ваши доходы — это доходы от работы по трудовому договору либо доходы от найма работников.
+            <srai>END TEST</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>НЕТ</pattern>
+        <that>
+        41 5 ПЛАНИРУЕТЕ ЛИ ВЫ БЫТЬ РАБОТНИКОМ ИЛИ РАБОТОДАТЕЛЕМ ПО ТРУДОВОМУ ДОГОВОРУ
+        </that>
+        <template>
+            43; Обратите внимание, что как самозанятый вы не можете оказывать услуги вашим бывшим работодателям (были в трудовых отношениях менее двух лет назад).
+            6. Планируете ли вы получать доход более 200 т./руб. в месяц?
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>НЕТ</pattern>
+        <that>
+        * 6 ПЛАНИРУЕТЕ ЛИ ВЫ ПОЛУЧАТЬ ДОХОД БОЛЕЕ *
+        </that>
+        <template>
+            46; 7. Планируете ли вы заниматься указанными видами деятельности?
+            Реализация подакцизных товаров и товаров, подлежащих обязательной маркировке (например, табачные изделия, обувь и другие);
+            Перепродажа товаров и имущественных прав;
+            Доставка товаров в интересах других лиц (кроме случаев, когда оплата производится через кассу продавца);
+            Предпринимательская деятельность в интересах другого лица;
+            Добыча или сбыт полезных ископаемых;
+        </template>
+    </category>
+
+    <category>
+        <pattern>ДА</pattern>
+        <that>
+        * 6 ПЛАНИРУЕТЕ ЛИ ВЫ ПОЛУЧАТЬ ДОХОД БОЛЕЕ *
+        </that>
+        <template>
+            45; Ваш доход от деятельности самозанятого не может превышать более 2.4 млн. рублей в текущем календарном году.
+            <srai>END TEST</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>НЕТ</pattern>
+        <that>
+        46 7 ПЛАНИРУЕТЕ ЛИ ВЫ ЗАНИМАТЬСЯ УКАЗАННЫМИ ВИДАМИ ДЕЯТЕЛЬНОСТИ *
+        </that>
+        <template>
+            48; Вы соответствуете всем критериям и вправе осуществлять деятельность в качестве самозанятого.
+            <srai>SUCCESS</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>ДА</pattern>
+        <that>
+        7 ПЛАНИРУЕТЕ ЛИ ВЫ ЗАНИМАТЬСЯ УКАЗАННЫМИ ВИДАМИ ДЕЯТЕЛЬНОСТИ *
+        </that>
+        <template>
+            47; Лица, занимающиеся данным видом деятельности, не вправе переходить на специальный налоговый режим «Налог на профессиональны й доход» и считаться самозанятыми.
+            <srai>END TEST</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>SUCCESS</pattern>
+        <template>
+            61; Перейти к регистрации, посмотреть подборку материалов для самозанятых, или ответы на вопросы о самозанятости?
+        </template>
+    </category>
+
+
+
+    <category>
+        <pattern>END TEST</pattern>
+        <template>
+            34; Пройти тест заново, или вернуться к началу бота?
+        </template>
+    </category>
+
+    <category>
+        <pattern>НАЧАЛО</pattern>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* НАЧАЛО</pattern>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>НАЧАЛО *</pattern>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* НАЧАЛО *</pattern>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+
+
+    <category>
+        <pattern>*</pattern>
+        <template>
+            100; Извините, я не понимаю ваш ответ. Можете повторить?
+        </template>
+    </category>
+
+
+
+</aiml>
