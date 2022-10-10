@@ -15,7 +15,7 @@
   let messages: Message[] = [];
   let userMessage: string;
   let buttons: ButtonMsg[] = [];
-  let is_buttons: number = 1;
+  let is_buttons: boolean = true;
   let id: string;
 
   let socket: WebSocket;
@@ -23,24 +23,27 @@
   onMount(() => {
     socket = new WebSocket("ws://localhost:9191/chat");
     socket.onmessage = (message) => {
-      id = message.data.id;
-      buttons = message.data.buttons;
-      is_buttons = message.data.is_buttons;
+      
+    console.log("id", JSON.parse(message.data));
+      id = JSON.parse(message.data).id;
+      buttons = JSON.parse(message.data).buttons;
+      is_buttons = JSON.parse(message.data).is_buttons;
       messages = [
         ...messages,
         {
           author: "bot",
-          data: message.data.text,
+          data: JSON.parse(message.data).text,
         },
       ];
     };
+
     socket.addEventListener("open", () => {
       console.log("Opened");
     });
   });
 
   const sendHandler = async () => {
-    socket.send(id + ";" + userMessage);
+    socket.send(id + ";1;" + userMessage);
     messages = [
       ...messages,
       {
@@ -51,41 +54,45 @@
     userMessage = "";
   };
 
-  const questionHandler = (value: string) => {
+  const questionHandler = (value: string, text: string) => {
     // if STR
-    socket.send(id + ";" + value);
+    socket.send(id + ";0;" + value);
     messages = [
       ...messages,
       {
         author: "user",
-        data: value,
+        data: text,
       },
     ];
   };
 
-  $: console.log("counter", counter);
 </script>
 
+<div class = "name">
+  <img class="picture" src = "Avatar.png" alt="intelligent assistent"/>
+  <p class="phrase"><br>Привет! Я ???.<br>
+    Виртуальный помощник.</p>
+  </div>
 <div id="bodybox">
   <div id="chatborder">
     {#each messages as message}
-      <p style="text-align: {message.author === 'user' ? 'right' : 'left'}">
+      <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
         {message.data}
       </p>
     {/each}
     <input
+      class="message"
       type="text"
       name="chat"
       bind:value={userMessage}
-      placeholder="Hi there! Type here to talk to me."
+      placeholder="Сообщение"
     />
-    <button type="button" on:click={sendHandler}>Send</button>
-    {#if is_buttons == 1}
+    <button type="button" class="send" on:click={sendHandler}>Send</button>
+    <p>{#if is_buttons == true}
       {#each buttons as button}
-        <button type="button" on:click={() => questionHandler(button.name)}
-          >{button.text}</button
-        >
-      {/each}
-    {/if}
+        <button type="button" class="box" on:click={() => questionHandler(button.name, button.text)}
+          >{button.text}</button> &nbsp;
+      {/each} 
+    {/if} </p>
   </div>
 </div>

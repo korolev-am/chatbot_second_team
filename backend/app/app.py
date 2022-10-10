@@ -6,6 +6,7 @@ from core.proc import aiml
 from core.load import loading
 from core.processing import processing
 
+import core.constants as const
 app = FastAPI()
 
 kernel = loading()
@@ -25,17 +26,18 @@ app.add_middleware(
 @app.websocket("/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
+    await websocket.send_json(const.MESSAGES[1])
     while True:
         data = await websocket.receive_text()
         global ans
         global input_memory
-        ans, input_memory, message = processing(data, kernel, input_memory, ans, False)
+        ans, input_memory, message = processing(data, kernel, input_memory, False, ans)
         await websocket.send_json(message)
         while len(message['buttons']) == 0:
             if message['id'] == 100:  # НЕ ПОНИМАЮ ОТВЕТА
                 pass
             else:
-                ans, input_memory, message = processing(message['id'], kernel, input_memory, ans, True)
+                ans, input_memory, message = processing(message['id'], kernel, input_memory, True, ans)
                 await websocket.send_json(message)
 
 def start():

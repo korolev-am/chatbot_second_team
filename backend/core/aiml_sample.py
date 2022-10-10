@@ -1,4 +1,4 @@
-from proc import *
+from core.proc import *
 import time
 
 time.clock = time.time

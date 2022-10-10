@@ -1,14 +1,16 @@
 body {
-  font: 15px arial, sans-serif;
-  background-color: #d9d9d9;
-  padding-top: 15px;
-  padding-bottom: 15px;
+
+  background-color: #74598F;
+  padding-top: 100px;
+  padding-bottom: 0px;
 }
 
 #bodybox {
-  margin: auto;
-  max-width: 550px;
-  font: 15px arial, sans-serif;
+  margin-left: auto;
+  margin-right: 0px;
+  max-width: 50%;
+  height: 100%;
+  font: 18px 'Roboto', sans-serif;
   background-color: white;
   border-style: solid;
   border-width: 1px;
@@ -35,7 +37,54 @@ body {
   border-radius: 15px;
 }
 
-.chatlog {
+.message {
+  background-color: #C6B0F1;
+  border-radius: 10px;
+  width: 90%;
+  height: 80%;
+  font-family: 'Verdana', sans-serif;
+  font-size: 100%;
+}
+
+.send {
+  background-color: #C6B0F1;
+  border-radius: 10px;
+  height: 60%;
+  font-family: 'Verdana', sans-serif;
+  font-size: 100%;
+}
+
+.box {
+  background-color: #C6B0F1;
+  border-radius: 10px;
+  font-family: 'Verdana', sans-serif;
+  font-size: 100%; 
+  height: 60%;
+}
+
+.name {
+  position: absolute;
+  width: 40%;
+  left: 2%;
+}
+
+.picture {
+  float: left;
+  width: 180px;
+  height: 220px;
+}
+
+.phrase {
+  /* margin-left: 180px; */
+  font: 22px 'Verdana', sans-serif;
+}
+/* .test {
+  background-color: #C6B0F1;
+  border-radius: 10px;
+  border: 2px;
+} */
+
+/* .chatlog {
   font: 15px arial, sans-serif;
 }
 
@@ -52,4 +101,4 @@ h1 {
 pre {
   background-color: #f0f0f0;
   margin-left: 20px;
-}
+} */
