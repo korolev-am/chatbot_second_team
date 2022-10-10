@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
   import { onMount } from "svelte";
 
   // store subscriptions
@@ -6,35 +6,31 @@
     author: "bot" | "user";
     data: string;
   };
-  type Buttons = {
-    [key: number]: string[];
+  type ButtonMsg = {
+    name: string;
+    text: string;
   };
+
 
   let messages: Message[] = [];
   let userMessage: string;
-  let buttons: Buttons = {
-    1: ["Блок 1, вопрос 1", "Блок 1, вопрос 2", "Блок 1, вопрос 3"],
-    2: ["Блок 2, вопрос 1", "Блок 2, вопрос 2"],
-    3: [
-      "Блок 3, вопрос 1",
-      "Блок 3, вопрос 2",
-      "Блок 3, вопрос 3",
-      "Блок 3, вопрос 4",
-    ],
-    4: [],
-  };
-  let counter: number = 1;
+  let buttons: ButtonMsg[] = [];
+  let is_buttons: number = 1;
+  let id: string;
 
   let socket: WebSocket;
 
   onMount(() => {
     socket = new WebSocket("ws://localhost:9191/chat");
     socket.onmessage = (message) => {
+      id = message.data.id;
+      buttons = message.data.buttons;
+      is_buttons = message.data.is_buttons;
       messages = [
         ...messages,
         {
           author: "bot",
-          data: message.data,
+          data: message.data.text,
         },
       ];
     };
@@ -44,7 +40,7 @@
   });
 
   const sendHandler = async () => {
-    socket.send(userMessage);
+    socket.send(id + ";" + userMessage);
     messages = [
       ...messages,
       {
@@ -56,7 +52,8 @@
   };
 
   const questionHandler = (value: string) => {
-    socket.send(value);
+    // if STR
+    socket.send(id + ";" + value);
     messages = [
       ...messages,
       {
@@ -64,7 +61,6 @@
         data: value,
       },
     ];
-    if (counter < 4) counter += 1;
   };
 
   $: console.log("counter", counter);
@@ -77,17 +73,19 @@
         {message.data}
       </p>
     {/each}
-    <!-- <input
+    <input
       type="text"
       name="chat"
       bind:value={userMessage}
       placeholder="Hi there! Type here to talk to me."
-    /> -->
-    <!-- <button type="button" on:click={sendHandler}>Send</button> -->
-    {#each buttons[counter] as buttonText}
-      <button type="button" on:click={() => questionHandler(buttonText)}
-        >{buttonText}</button
-      >
-    {/each}
+    />
+    <button type="button" on:click={sendHandler}>Send</button>
+    {#if is_buttons == 1}
+      {#each buttons as button}
+        <button type="button" on:click={() => questionHandler(button.name)}
+          >{button.text}</button
+        >
+      {/each}
+    {/if}
   </div>
 </div>

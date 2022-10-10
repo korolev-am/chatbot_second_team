@@ -1,39 +1,27 @@
 from proc import *
+import time
 
-def main():
-
-    kernel = aiml.Kernel()
-    kernel.learn("std-startup.xml")
-    kernel.respond("load aiml b")
-
-    input_memory = []
-
-    ans = ''
-    user_input = 'START'
-
-    while(1):
-
-        user_input = process_test(ans, user_input)     #обработка вопросов 1-3 из теста
-        ans = kernel.respond(user_input)
-
-        # --- обработка неправильного ввода --- #
-
-        if ans == ERR_MSG:
-
-            print(ERR_MSG)
-
-            for x in input_memory:
-                ans = kernel.respond(x)
-
-        else:
-            input_memory.append(user_input)
+time.clock = time.time
 
 
-        print(ans)
-        user_input = process_input(input())           #обработка пользовательского ввода
+def aiml_processing(kernel, inp_memory, inp: str=None, ans: str=''):
 
+    user_input = process_input(inp)
+    user_input = process_test(ans, user_input)     #обработка вопросов 1-3 из теста
+    # print("USER INPUT:", user_input)
+    ans = kernel.respond(user_input)
+    # print("ANSWER:", ans)
 
+    # --- обработка неправильного ввода --- #
 
-if __name__ == '__main__':
-    main()
+    if ans == ERR_MSG:
 
+        for x in inp_memory:
+            ans = kernel.respond(x)
+
+        return '100;' + ERR_MSG + ans, inp_memory
+
+    else:
+        inp_memory.append(user_input)
+        return ans, inp_memory
+    
