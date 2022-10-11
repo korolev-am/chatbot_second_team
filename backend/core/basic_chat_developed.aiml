@@ -1,4 +1,4 @@
-<aiml version="1.0.1" encoding="UTF-8">
+﻿<aiml version="1.0.1" encoding="UTF-8">
 <!-- basic_chat_developed.aiml -->
 
     <category>
@@ -90,7 +90,7 @@
     </category>
 
     <category>
-        <pattern>НАЗАД1</pattern>   <!-- после удачного прохождения теста -->
+        <pattern>NAZAD</pattern>
         <that>
         11 ВАРИАНТ 1
         </that>
@@ -110,7 +110,7 @@
     </category>
 
     <category>
-        <pattern>НАЗАД1</pattern>   <!-- после удачного прохождения теста -->
+        <pattern>NAZAD</pattern>   <!-- после удачного прохождения теста -->
         <that>
         16 ВАРИАНТ 2
         </that>
@@ -130,7 +130,7 @@
     </category>
 
     <category>
-        <pattern>НАЗАД1</pattern>   <!-- после удачного прохождения теста -->
+        <pattern>NAZAD</pattern>   <!-- после удачного прохождения теста -->
         <that>
         21 ВАРИАНТ 3
         </that>
@@ -150,7 +150,7 @@
     </category>
 
     <category>
-        <pattern>НАЗАД1</pattern>   <!-- после удачного прохождения теста -->
+        <pattern>NAZAD</pattern>   <!-- после удачного прохождения теста -->
         <that>
         26 НЕТ ДОКУМЕНТОВ ДЛЯ ЭТОГО ВИДА
         </that>

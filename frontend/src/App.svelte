@@ -17,14 +17,13 @@
   let buttons: ButtonMsg[] = [];
   let is_buttons: boolean = true;
   let id: string;
+  let files: string;
 
   let socket: WebSocket;
 
   onMount(() => {
     socket = new WebSocket("ws://localhost:9191/chat");
     socket.onmessage = (message) => {
-      
-    console.log("id", JSON.parse(message.data));
       id = JSON.parse(message.data).id;
       buttons = JSON.parse(message.data).buttons;
       is_buttons = JSON.parse(message.data).is_buttons;
@@ -88,7 +87,7 @@
       placeholder="Сообщение"
     />
     <button type="button" class="send" on:click={sendHandler}>Send</button>
-    <p>{#if is_buttons == true}
+    <p align="center">{#if is_buttons == true}
       {#each buttons as button}
         <button type="button" class="box" on:click={() => questionHandler(button.name, button.text)}
           >{button.text}</button> &nbsp;

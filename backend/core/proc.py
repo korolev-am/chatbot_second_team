@@ -1,4 +1,4 @@
-import aiml
+﻿import aiml
 import pymorphy2
 
 ERR_MSG = "Извините, я не понимаю ваш ответ. Можете повторить?"
@@ -47,7 +47,7 @@ def process_input(str):
         res += (morph.parse(x)[0].normal_form).upper() + ' '
     print(res.strip())
     if str == 'Назад':
-        res = 'НАЗАД1'
+        res = 'NAZAD'
     return res.strip()
 
 

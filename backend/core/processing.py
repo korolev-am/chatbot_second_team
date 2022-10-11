@@ -20,8 +20,6 @@ def processing(data: str, kernel, input_memory, is_empty: bool, ans: str='') -> 
 
             return ans, input_memory, const.MESSAGES[id_message]
     else:
-        id_current = data
+        id_current = int(data)
         id_next = const.TRANSITION_MAP[id_current][1]
         return ans, input_memory, const.MESSAGES[id_next]
-
-    
