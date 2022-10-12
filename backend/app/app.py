@@ -12,6 +12,7 @@ app = FastAPI()
 kernel = loading()
 input_memory = []
 ans = ''
+last_message = 0
 
 origins = ['http://127.0.0.1:5173']
 
@@ -31,12 +32,21 @@ async def websocket_endpoint(websocket: WebSocket):
         data = await websocket.receive_text()
         global ans
         global input_memory
-        ans, input_memory, message = processing(data, kernel, input_memory, False, ans)
+        global last_message
+        ans, input_memory, message = processing(data, kernel, input_memory, False, ans) # ответ пользователя
+        if message['id'] != '100':
+            last_message = message
         await websocket.send_json(message)
         while len(message['buttons']) == 0:
-            if message['id'] != '100':  # НЕ ПОНИМАЮ ОТВЕТА
-                ans, input_memory, message = processing(message['id'], kernel, input_memory, True, ans)
+            if message['id'] != '100':  # корректный запрос
+                ans, input_memory, message = processing(message['id'], kernel, input_memory, True, ans) # наш ответ
+                if message['id'] != '100':
+                    last_message = message
                 await websocket.send_json(message)
+            else: # некорретный запрос
+                print(last_message)
+                await websocket.send_json(last_message)
+                break
 
 def start():
     """
