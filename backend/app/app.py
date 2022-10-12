@@ -34,9 +34,7 @@ async def websocket_endpoint(websocket: WebSocket):
         ans, input_memory, message = processing(data, kernel, input_memory, False, ans)
         await websocket.send_json(message)
         while len(message['buttons']) == 0:
-            if message['id'] == '100':  # НЕ ПОНИМАЮ ОТВЕТА
-                pass
-            else:
+            if message['id'] != '100':  # НЕ ПОНИМАЮ ОТВЕТА
                 ans, input_memory, message = processing(message['id'], kernel, input_memory, True, ans)
                 await websocket.send_json(message)
 

@@ -46,8 +46,6 @@ def process_input(str):
     for x in tmp:
         res += (morph.parse(x)[0].normal_form).upper() + ' '
     print(res.strip())
-    if str == 'Назад':
-        res = 'NAZAD'
     return res.strip()
 
 

@@ -5,6 +5,7 @@
   type Message = {
     author: "bot" | "user";
     data: string;
+    file: string;
   };
   type ButtonMsg = {
     name: string;
@@ -17,7 +18,6 @@
   let buttons: ButtonMsg[] = [];
   let is_buttons: boolean = true;
   let id: string;
-  let files: string;
 
   let socket: WebSocket;
 
@@ -32,6 +32,7 @@
         {
           author: "bot",
           data: JSON.parse(message.data).text,
+          file: JSON.parse(message.data).files,
         },
       ];
     };
@@ -48,6 +49,7 @@
       {
         author: "user",
         data: userMessage,
+        file: "",
       },
     ];
     userMessage = "";
@@ -61,6 +63,7 @@
       {
         author: "user",
         data: text,
+        file: "",
       },
     ];
   };
@@ -78,6 +81,11 @@
       <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
         {message.data}
       </p>
+      {#if message.file != ""}
+      <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
+        <a href="{message.file}">Скачать</a>
+      </p>
+      {/if}
     {/each}
     <input
       class="message"
@@ -86,12 +94,14 @@
       bind:value={userMessage}
       placeholder="Сообщение"
     />
-    <button type="button" class="send" on:click={sendHandler}>Send</button>
-    <p align="center">{#if is_buttons == true}
+    <button type="button" class="send" on:click={sendHandler}>Отправить</button>
+    <p align="center">
+    {#if is_buttons == true}
       {#each buttons as button}
         <button type="button" class="box" on:click={() => questionHandler(button.name, button.text)}
           >{button.text}</button> &nbsp;
       {/each} 
-    {/if} </p>
+    {/if}
+    </p>
   </div>
 </div>
