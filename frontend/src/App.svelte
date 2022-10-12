@@ -83,7 +83,7 @@
       </p>
       {#if message.file != ""}
       <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
-        <a href="{message.file}">Скачать</a>
+        <a href="{message.file} download">Скачать</a>
       </p>
       {/if}
     {/each}
