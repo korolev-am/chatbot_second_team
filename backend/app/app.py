@@ -9,11 +9,6 @@ from core.processing import processing
 import core.constants as const
 app = FastAPI()
 
-kernel = loading()
-input_memory = []
-ans = ''
-last_message = 0
-
 origins = ['http://127.0.0.1:5173']
 
 app.add_middleware(
@@ -27,12 +22,13 @@ app.add_middleware(
 @app.websocket("/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
+    kernel = loading()
+    input_memory = []
+    ans = ''
+    last_message = 0
     await websocket.send_json(const.MESSAGES[1])
     while True:
         data = await websocket.receive_text()
-        global ans
-        global input_memory
-        global last_message
         ans, input_memory, message = processing(data, kernel, input_memory, False, ans) # ответ пользователя
         if message['id'] != '100':
             last_message = message

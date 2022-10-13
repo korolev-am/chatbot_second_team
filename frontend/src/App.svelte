@@ -17,12 +17,13 @@
   let userMessage: string;
   let buttons: ButtonMsg[] = [];
   let is_buttons: boolean = true;
-  let id: string;
+  let id: string = -1;
 
   let socket: WebSocket;
 
   onMount(() => {
     socket = new WebSocket("ws://localhost:9191/chat");
+    //socket.send("LOAD AIML");
     socket.onmessage = (message) => {
       id = JSON.parse(message.data).id;
       buttons = JSON.parse(message.data).buttons;
@@ -32,7 +33,7 @@
         {
           author: "bot",
           data: JSON.parse(message.data).text,
-          file: JSON.parse(message.data).files,
+          file: encodeURI(JSON.parse(message.data).files),
         },
       ];
     };
@@ -68,7 +69,9 @@
     ];
   };
 
+
 </script>
+
 
 <div class = "name">
   <img class="picture" src = "Avatar.png" alt="intelligent assistent"/>
@@ -83,7 +86,7 @@
       </p>
       {#if message.file != ""}
       <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
-        <a href="{message.file} download">Скачать</a>
+        <a href="./files/{message.file}" download="{decodeURI(message.file)}">Скачать</a>
       </p>
       {/if}
     {/each}
