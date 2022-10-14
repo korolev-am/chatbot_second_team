@@ -40,7 +40,7 @@ body {
 .message {
   background-color: #C6B0F1;
   border-radius: 10px;
-  width: 90%;
+  width: 91%;
   height: 80%;
   font-family: 'Verdana', sans-serif;
   font-size: 100%;
@@ -49,9 +49,16 @@ body {
 .send {
   background-color: #C6B0F1;
   border-radius: 10px;
-  height: 60%;
   font-family: 'Verdana', sans-serif;
   font-size: 100%;
+  width: 7%; 
+  height: 80%;
+}
+.send-p {
+  height: 25px;
+  width: 25px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .box {

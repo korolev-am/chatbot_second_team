@@ -1,5 +1,7 @@
+import numbers
 import uvicorn
 from fastapi import FastAPI, WebSocket
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from core.proc import aiml
@@ -8,6 +10,9 @@ from core.processing import processing
 
 import core.constants as const
 app = FastAPI()
+
+with open('./docs/docs.html') as f:
+    docs_file = f.read()
 
 kernel = loading()
 input_memory = []
@@ -39,6 +44,13 @@ async def websocket_endpoint(websocket: WebSocket):
             else:
                 ans, input_memory, message = processing(message['id'], kernel, input_memory, True, ans)
                 await websocket.send_json(message)
+
+@app.get('/ws/docs')
+async def method_for_docs():
+    """
+    Fetch docs for websocket here
+    """
+    return HTMLResponse(docs_file)
 
 def start():
     """
