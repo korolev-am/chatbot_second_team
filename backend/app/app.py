@@ -31,19 +31,27 @@ app.add_middleware(
 @app.websocket("/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
+    kernel = loading()
+    input_memory = []
+    ans = ''
+    last_message = 0
     await websocket.send_json(const.MESSAGES[1])
     while True:
         data = await websocket.receive_text()
-        global ans
-        global input_memory
-        ans, input_memory, message = processing(data, kernel, input_memory, False, ans)
+        ans, input_memory, message = processing(data, kernel, input_memory, False, ans) # ответ пользователя
+        if message['id'] != '100':
+            last_message = message
         await websocket.send_json(message)
         while len(message['buttons']) == 0:
-            if message['id'] == 100:  # НЕ ПОНИМАЮ ОТВЕТА
-                pass
-            else:
-                ans, input_memory, message = processing(message['id'], kernel, input_memory, True, ans)
+            if message['id'] != '100':  # корректный запрос
+                ans, input_memory, message = processing(message['id'], kernel, input_memory, True, ans) # наш ответ
+                if message['id'] != '100':
+                    last_message = message
                 await websocket.send_json(message)
+            else: # некорретный запрос
+                print(last_message)
+                await websocket.send_json(last_message)
+                break
 
 @app.get('/ws/docs')
 async def method_for_docs():

@@ -5,6 +5,7 @@
   type Message = {
     author: "bot" | "user";
     data: string;
+    file: string;
   };
   type ButtonMsg = {
     name: string;
@@ -16,15 +17,14 @@
   let userMessage: string;
   let buttons: ButtonMsg[] = [];
   let is_buttons: boolean = true;
-  let id: string;
+  let id: string = -1;
 
   let socket: WebSocket;
 
   onMount(() => {
     socket = new WebSocket("ws://localhost:9191/chat");
+    //socket.send("LOAD AIML");
     socket.onmessage = (message) => {
-      
-    console.log("id", JSON.parse(message.data));
       id = JSON.parse(message.data).id;
       buttons = JSON.parse(message.data).buttons;
       is_buttons = JSON.parse(message.data).is_buttons;
@@ -33,6 +33,7 @@
         {
           author: "bot",
           data: JSON.parse(message.data).text,
+          file: encodeURI(JSON.parse(message.data).files),
         },
       ];
     };
@@ -49,6 +50,7 @@
       {
         author: "user",
         data: userMessage,
+        file: "",
       },
     ];
     userMessage = "";
@@ -62,11 +64,14 @@
       {
         author: "user",
         data: text,
+        file: "",
       },
     ];
   };
 
+
 </script>
+
 
 <div class = "name">
   <img class="picture" src = "Avatar.png" alt="intelligent assistent"/>
@@ -79,6 +84,11 @@
       <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
         {message.data}
       </p>
+      {#if message.file != ""}
+      <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
+        <a href="./files/{message.file}" download="{decodeURI(message.file)}">Скачать</a>
+      </p>
+      {/if}
     {/each}
     <input
       class="message"
@@ -93,6 +103,7 @@
         <button type="button" class="box" on:click={() => questionHandler(button.name, button.text)}
           >{button.text}</button> &nbsp;
       {/each} 
-    {/if} </p>
+    {/if}
+    </p>
   </div>
 </div>

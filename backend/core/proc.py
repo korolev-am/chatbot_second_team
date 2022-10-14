@@ -1,7 +1,7 @@
-import aiml
+﻿import aiml
 import pymorphy2
 
-ERR_MSG = "Извините, я не понимаю ваш ответ. Можете повторить?"
+ERR_MSG = "100; Извините, я не понимаю ваш ответ. Можете повторить?"
 RUS = ["РФ", "РОССИЯ", "РОССИЙСКИЙ ФЕДЕРАЦИЯ", "НА ТЕРРИТОРИЯ РОССИЙСКИЙ ФЕДЕРАЦИЯ"]
 ALLOWED = RUS + ["АРМЕНИЯ", "БЕЛАРУСЬ", "КАЗАХСТАН", "КЫРГЫЗСТАН",
                  "УКРАИНА", "ДНР", "ДОНЕЦКИЙ НАРОДНЫЙ РЕСПУБЛИКА", "ЛНР", "ЛУГАНСКИЙ НАРОДНЫЙ РЕСПУБЛИКА"]
@@ -39,15 +39,23 @@ def process_input(str):
     """
     приведение слов пользователя в начальную форму
     """
+    
+    to_be_removed = []
+    
+    for x in str:
+        if not x.isalpha() and not x.isdigit() and x != ' ':
+            to_be_removed.append(x)
+    for x in to_be_removed:
+        str = str.replace(x, '')
+
+    str = str.replace('ё', 'е')
 
     res = ''
     tmp = str.split()
 
     for x in tmp:
         res += (morph.parse(x)[0].normal_form).upper() + ' '
-    print(res.strip())
-    if str == 'Назад':
-        res = 'НАЗАД1'
+
     return res.strip()
 
 
