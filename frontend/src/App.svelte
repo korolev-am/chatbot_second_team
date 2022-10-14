@@ -98,7 +98,7 @@
       placeholder="Сообщение"
     />
     <button type="button" class="send" on:click={sendHandler}><img class = "send-p" src = "favicon.svg" alt = "Отправить"></button>
-    <p>{#if is_buttons == true}
+    <p align="center">{#if is_buttons == true}
       {#each buttons as button}
         <button type="button" class="box" on:click={() => questionHandler(button.name, button.text)}
           >{button.text}</button> &nbsp;
