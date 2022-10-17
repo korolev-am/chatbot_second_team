@@ -1,10 +1,10 @@
 ﻿<script lang="ts">
-  import { onMount } from "svelte";
+  import { afterUpdate, onMount } from "svelte";
 
   // store subscriptions
   type Message = {
     author: "bot" | "user";
-    data: string;
+    data: string[];
     file: string;
   };
   type ButtonMsg = {
@@ -12,6 +12,8 @@
     text: string;
   };
 
+
+  let element;
 
   let messages: Message[] = [];
   let userMessage: string;
@@ -43,13 +45,21 @@
     });
   });
 
+  const scrollToBottom = async (node) => {
+    node.scroll({ top: node.scrollHeight, behavior: 'smooth' });
+  }; 
+
+  afterUpdate(() => {
+    scrollToBottom(element);
+  });
+
   const sendHandler = async () => {
     socket.send(id + ";1;" + userMessage);
     messages = [
       ...messages,
       {
         author: "user",
-        data: userMessage,
+        data: [userMessage],
         file: "",
       },
     ];
@@ -63,7 +73,7 @@
       ...messages,
       {
         author: "user",
-        data: text,
+        data: [text],
         file: "",
       },
     ];
@@ -79,16 +89,28 @@
     Виртуальный помощник.</p>
   </div>
 <div id="bodybox">
-  <div id="chatborder">
+  <div bind:this={element} id="chatborder">
     {#each messages as message}
       <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
-        {message.data}
+        {#each message.data as sent}
+          {#if sent[0] == "~"}
+            {#if sent[1] == "n"}
+              <br>
+            {/if}
+            {#if sent[1] == "a"}
+              {#if sent[2] == "d"}
+                <a href="./files/{sent.replace('~ad', '')}" download="{decodeURI(sent.replace('~ad', ''))}">Скачать</a>
+              {/if}
+              {#if sent[2] == "u"}
+                <a href="{sent.replace('~ad', '')}">WILL BE DEVELOPED</a>
+              {/if}
+            {/if}
+          {/if}
+          {#if sent[0] != "~"}
+            {sent}
+          {/if}
+        {/each}
       </p>
-      {#if message.file != ""}
-      <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
-        <a href="./files/{message.file}" download="{decodeURI(message.file)}">Скачать</a>
-      </p>
-      {/if}
     {/each}
     <input
       class="message"
@@ -98,7 +120,7 @@
       placeholder="Сообщение"
     />
     <button type="button" class="send" on:click={sendHandler}><img class = "send-p" src = "favicon.svg" alt = "Отправить"></button>
-    <p>{#if is_buttons == true}
+    <p align="center">{#if is_buttons == true}
       {#each buttons as button}
         <button type="button" class="box" on:click={() => questionHandler(button.name, button.text)}
           >{button.text}</button> &nbsp;
