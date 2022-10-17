@@ -17,7 +17,7 @@
   let userMessage: string;
   let buttons: ButtonMsg[] = [];
   let is_buttons: boolean = true;
-  let id: string = -1;
+  let id: string = "-1";
 
   let socket: WebSocket;
 
