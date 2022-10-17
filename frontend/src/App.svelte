@@ -14,7 +14,6 @@
 
 
   let element;
-
   let messages: Message[] = [];
   let userMessage: string;
   let buttons: ButtonMsg[] = [];
@@ -91,7 +90,7 @@
 <div id="bodybox">
   <div bind:this={element} id="chatborder">
     {#each messages as message}
-      <p class="test" style="text-align: {message.author === 'user' ? 'right' : 'left'}">
+    <br><p class="{message.author === 'user' ? 'message-right' : 'message-left'}">  
         {#each message.data as sent}
           {#if sent[0] == "~"}
             {#if sent[1] == "n"}
@@ -99,7 +98,7 @@
             {/if}
             {#if sent[1] == "a"}
               {#if sent[2] == "d"}
-                <a href="./files/{sent.replace('~ad', '')}" download="{decodeURI(sent.replace('~ad', ''))}">Скачать</a>
+                <a href="./files/{sent.replace('~ad', '')}" download="{decodeURI(sent.replace('~ad', ''))}" style="color: #303030">Скачать</a>
               {/if}
               {#if sent[2] == "u"}
                 <a href="{sent.replace('~ad', '')}">WILL BE DEVELOPED</a>
@@ -110,8 +109,12 @@
             {sent}
           {/if}
         {/each}
-      </p>
+        </p>
+        {#if message.author === 'user' }
+        <br><br>
+       {/if}
     {/each}
+
     <input
       class="message"
       type="text"
@@ -119,13 +122,16 @@
       bind:value={userMessage}
       placeholder="Сообщение"
     />
+
     <button type="button" class="send" on:click={sendHandler}><img class = "send-p" src = "favicon.svg" alt = "Отправить"></button>
-    <p style = "text-align: center">{#if is_buttons == true}
-      {#each buttons as button}
-        <button type="button" class="box" on:click={() => questionHandler(button.name, button.text)}
-          >{button.text}</button> &nbsp;
-      {/each} 
-    {/if}
+    
+    <p style = "text-align: center">
+      {#if is_buttons == true}
+        {#each buttons as button}
+          <button type="button" class="box" on:click={() => questionHandler(button.name, button.text)}>
+          {button.text}</button> &nbsp;
+       {/each} 
+     {/if}
     </p>
   </div>
 </div>

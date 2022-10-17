@@ -60,7 +60,25 @@
         padding-left: 1%;
         border-radius: 15px;
       }
+      .message-left {
+        display: inline-block;
+        text-align: left;
+        background-color: #C6B0F1;
+        border: 2px outset #000000;
+        padding: 1%;
+        border-radius: 10px;
+      }
+      .message-right {
+        position: absolute;
+        display: inline-block;
+        right: 1%;
+        background-color: #C6B0F1;
+        border: 2px outset #000000;
+        padding: 1%;
+        border-radius: 10px;
       
+      
+      }
       .message {
         background-color: #C6B0F1;
         border-radius: 10px;
@@ -160,6 +178,25 @@
         border-radius: 15px;
       }
       
+      .message-left {
+        display: inline-block;
+        text-align: left;
+        background-color: #C6B0F1;
+        border: 2px outset #000000;
+        padding: 1%;
+        border-radius: 10px;
+      }
+      .message-right {
+        position: absolute;
+        display: inline-block;
+        right: 1%;
+        background-color: #C6B0F1;
+        border: 2px outset #000000;
+        padding: 1%;
+        border-radius: 10px;
+      
+      
+      }
       .message {
         background-color: #C6B0F1;
         border-radius: 10px;
@@ -259,6 +296,25 @@
         border-radius: 15px;
       }
       
+      .message-left {
+        display: inline-block;
+        text-align: left;
+        background-color: #C6B0F1;
+        border: 2px outset #000000;
+        padding: 1%;
+        border-radius: 10px;
+      }
+      .message-right {
+        position: absolute;
+        display: inline-block;
+        right: 1%;
+        background-color: #C6B0F1;
+        border: 2px outset #000000;
+        padding: 1%;
+        border-radius: 10px;
+      
+      
+      }
       .message {
         background-color: #C6B0F1;
         border-radius: 10px;
