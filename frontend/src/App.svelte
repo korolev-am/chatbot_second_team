@@ -5,7 +5,6 @@
   type Message = {
     author: "bot" | "user";
     data: string[];
-    file: string;
   };
   type ButtonMsg = {
     name: string;
@@ -23,25 +22,35 @@
   let socket: WebSocket;
 
   onMount(() => {
-    socket = new WebSocket("ws://localhost:9191/chat");
-    //socket.send("LOAD AIML");
-    socket.onmessage = (message) => {
-      id = JSON.parse(message.data).id;
-      buttons = JSON.parse(message.data).buttons;
-      is_buttons = JSON.parse(message.data).is_buttons;
+    try {
+      socket = new WebSocket("ws://localhost:9191/chat");
+      socket.onmessage = (message) => {
+        id = JSON.parse(message.data).id;
+        buttons = JSON.parse(message.data).buttons;
+        is_buttons = JSON.parse(message.data).is_buttons;
+        messages = [
+          ...messages,
+          {
+            author: "bot",
+            data: JSON.parse(message.data).text,
+          },
+        ];
+      };
+
+      socket.addEventListener("open", () => {
+        console.log("Opened");
+      });
+    }
+    catch (error) {
+      console.error(error);
       messages = [
         ...messages,
         {
           author: "bot",
-          data: JSON.parse(message.data).text,
-          file: encodeURI(JSON.parse(message.data).files),
+          data: "К сожалению, сервер сейчас недоступен. Попробуйте зайти позднее...",
         },
       ];
-    };
-
-    socket.addEventListener("open", () => {
-      console.log("Opened");
-    });
+    }
   });
 
   const scrollToBottom = async (node) => {
@@ -59,7 +68,6 @@
       {
         author: "user",
         data: [userMessage],
-        file: "",
       },
     ];
     userMessage = "";
@@ -73,7 +81,6 @@
       {
         author: "user",
         data: [text],
-        file: "",
       },
     ];
   };
@@ -101,7 +108,7 @@
                 <a href="./files/{sent.replace('~ad', '')}" download="{decodeURI(sent.replace('~ad', ''))}" style="color: #303030">Скачать</a>
               {/if}
               {#if sent[2] == "u"}
-                <a href="{sent.replace('~ad', '')}">WILL BE DEVELOPED</a>
+                <a href="{sent.slice(3, sent.indexOf('~t'))}">{sent.slice(sent.indexOf('~t')+2)}</a>
               {/if}
             {/if}
           {/if}

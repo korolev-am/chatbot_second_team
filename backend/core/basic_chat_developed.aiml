@@ -404,6 +404,36 @@
         </template>
     </category>
 
+    <category>
+        <pattern>К МАТЕРИАЛ</pattern>
+        <that>
+        62 РЕГИСТРАЦИЯ ЧЕРЕЗ ФНС
+        </that>
+        <template>
+            4; Вы хотели бы продавать товары собственного производства или оказывать услуги?
+        </template>
+    </category>
+
+    <category>
+        <pattern>* ВОПРОС *</pattern>
+        <that>
+        62 РЕГИСТРАЦИЯ ЧЕРЕЗ ФНС
+        </that>
+        <template>
+            5; Введите ваш вопрос:
+        </template>
+    </category>
+
+    <category>
+        <pattern>* НАЧАЛО *</pattern>
+        <that>
+        62 РЕГИСТРАЦИЯ ЧЕРЕЗ ФНС
+        </that>
+        <template>
+            <srai>START</srai>
+        </template>
+    </category>
+
 
     <category>
         <pattern>ВОПРОС</pattern>
