@@ -84,7 +84,7 @@
 
 <div class = "name">
   <img class="picture" src = "Avatar.png" alt="intelligent assistent"/>
-  <p class="phrase"><br>Привет! Я "Всё сам".<br>
+  <p class="phrase"><br>Привет! "Я всё сам".<br>
     Виртуальный помощник.</p>
   </div>
 <div id="bodybox">
