@@ -22,35 +22,34 @@
   let socket: WebSocket;
 
   onMount(() => {
-    try {
-      socket = new WebSocket("ws://localhost:9191/chat");
-      socket.onmessage = (message) => {
-        id = JSON.parse(message.data).id;
-        buttons = JSON.parse(message.data).buttons;
-        is_buttons = JSON.parse(message.data).is_buttons;
-        messages = [
-          ...messages,
-          {
-            author: "bot",
-            data: JSON.parse(message.data).text,
-          },
-        ];
-      };
-
-      socket.addEventListener("open", () => {
-        console.log("Opened");
-      });
-    }
-    catch (error) {
-      console.error(error);
+    socket = new WebSocket("ws://localhost:9191/chat");
+    socket.onmessage = (message) => {
+      id = JSON.parse(message.data).id;
+      buttons = JSON.parse(message.data).buttons;
+      is_buttons = JSON.parse(message.data).is_buttons;
       messages = [
         ...messages,
         {
           author: "bot",
-          data: "К сожалению, сервер сейчас недоступен. Попробуйте зайти позднее...",
+          data: JSON.parse(message.data).text,
         },
       ];
-    }
+    };
+
+    socket.addEventListener("open", () => {
+      console.log("Opened");
+    });
+
+    socket.addEventListener('error', (event) => {
+      console.log('WebSocket error: ', event);
+      messages = [
+        ...messages,
+        {
+          author: "bot",
+          data: ["~bК сожалению, сервер сейчас недоступен. Попробуйте позднее"],
+        },
+     ];
+    });
   });
 
   const scrollToBottom = async (node) => {
@@ -108,8 +107,14 @@
                 <a href="./files/{sent.replace('~ad', '')}" download="{decodeURI(sent.replace('~ad', ''))}" style="color: #303030">Скачать</a>
               {/if}
               {#if sent[2] == "u"}
-                <a href="{sent.slice(3, sent.indexOf('~t'))}">{sent.slice(sent.indexOf('~t')+2)}</a>
+                <a href="{sent.slice(3, sent.indexOf('~t'))}" target="_blank" rel="noopener noreferrer">{sent.slice(sent.indexOf('~t')+2)}</a>
               {/if}
+            {/if}
+            {#if sent[1] == "i"}
+              <i>{sent.slice(2)}</i>
+            {/if}
+            {#if sent[1] == "b"}
+              <b>{sent.slice(2)}</b>
             {/if}
           {/if}
           {#if sent[0] != "~"}
