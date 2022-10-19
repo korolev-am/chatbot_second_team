@@ -41,6 +41,10 @@ async def websocket_endpoint(websocket: WebSocket):
         ans, input_memory, message = processing(data, kernel, input_memory, False, ans) # ответ пользователя
         if message['id'] != '100':
             last_message = message
+        if message['id'] == '126':
+            file = open("./user_questions.txt", "a")
+            file.write(input_memory[-1] + '\n')
+            file.close()
         await websocket.send_json(message)
         while len(message['buttons']) == 0:
             if message['id'] != '100':  # корректный запрос
