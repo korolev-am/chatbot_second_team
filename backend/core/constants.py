@@ -629,7 +629,7 @@
         "text": [
             "Регистрация через ФНС",
             "~n",
-            "~auhttps://www.nalog.gov.ru/~tПерейти на сайт ФНС"
+            "~auhttps://lknpd.nalog.ru/auth/login/~tПерейти на сайт ФНС"
         ],
         "is_buttons": True,
         "buttons": [
