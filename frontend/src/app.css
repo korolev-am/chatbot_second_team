@@ -92,13 +92,14 @@ body {
 .name {
   position: absolute;
   width: 40%;
+  /* height: 60%; */
   left: 2%;
 }
 
 .picture {
   float: left;
   width: 30%;
-  height: 40%;
+  height: 50%;
 }
 
 .phrase {

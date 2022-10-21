@@ -1,4 +1,4 @@
-@media only screen and (max-width: 950px) and (min-width: 650px) {
+@media only screen and (max-width: 950px) and (min-width: 700px) {
     body {
 
         background-color: #74598F;
@@ -11,12 +11,13 @@
         text-align: center;
         top: 5%;
         left: 30%;
+        /* height: 60%; */
         /* margin-right: 25%; */
       }
       
       .picture {
-        width: 30%;
-        height: 40%;
+        width: 35%;
+        height: 28%;
         margin: 0;
       }
       
@@ -115,7 +116,7 @@
       
 }
 
-@media only screen and (max-width: 649px) and (min-width: 451px){
+@media only screen and (max-width: 699px) and (min-width: 451px){
     body {
 
         background-color: #74598F;
@@ -128,6 +129,7 @@
         text-align: center;
         top: 5%;
         left: 10%;
+        /* height: 60%; */
         /* margin-right: 25%; */
       }
       
@@ -246,6 +248,7 @@
         text-align: center;
         top: 5%;
         left: 10%;
+        /* height: 60; */
         /* margin-right: 25%; */
       }
       

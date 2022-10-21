@@ -89,7 +89,7 @@
 
 
 <div class = "name">
-  <img class="picture" src = "Avatar.png" alt="intelligent assistent"/>
+  <img class="picture" src = "worm-logo.png" alt="intelligent assistent"/>
   <p class="phrase"><br>Привет! "Я всё сам".<br>
     Виртуальный помощник.</p>
   </div>
@@ -107,7 +107,7 @@
                 <a href="./files/{sent.replace('~ad', '')}" download="{decodeURI(sent.replace('~ad', ''))}" style="color: #303030">Скачать</a>
               {/if}
               {#if sent[2] == "u"}
-                <a href="{sent.slice(3, sent.indexOf('~t'))}" target="_blank" rel="noopener noreferrer">{sent.slice(sent.indexOf('~t')+2)}</a>
+                <a href="{sent.slice(3, sent.indexOf('~t'))}" target="_blank" rel="noopener noreferrer" style="color: #303030; font-weight: bolder"  >{sent.slice(sent.indexOf('~t')+2)}</a>
               {/if}
             {/if}
             {#if sent[1] == "i"}
