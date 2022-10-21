@@ -111,7 +111,7 @@
               {/if}
             {/if}
             {#if sent[1] == "i"}
-              <i>{sent.slice(2)}</i>
+             <i class="pr">{sent.slice(2)}</i>
             {/if}
             {#if sent[1] == "b"}
               <b>{sent.slice(2)}</b>

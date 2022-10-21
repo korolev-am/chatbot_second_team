@@ -40,8 +40,16 @@ body {
   border-radius: 15px;
 }
 
+/* .pr {
+  display: inline-block;
+  text-align: left;
+  background-color: #ffffff;
+  border: 2px outset #000000;
+  padding: 1%;
+  border-radius: 10px;
+} */
 .message {
-  background-color: #C6B0F1;
+  background-color: #c6b0f1;
   border-radius: 10px;
   width: 90%;
   height: 80%;
@@ -52,7 +60,7 @@ body {
 .message-left {
   display: inline-block;
   text-align: left;
-  background-color: #C6B0F1;
+  background-color: #c6b0f1;
   border: 2px outset #000000;
   padding: 1%;
   border-radius: 10px;
@@ -61,13 +69,13 @@ body {
   position: absolute;
   display: inline-block;
   right: 1%;
-  background-color: #C6B0F1;
+  background-color: #e6dcfa;
   border: 2px outset #000000;
   padding: 1%;
   border-radius: 10px;
 }
 .send {
-  background-color: #C6B0F1;
+  background-color: #c6b0f1;
   border-radius: 10px;
   font-family: 'Verdana', sans-serif;
   font-size: 100%;
@@ -82,7 +90,7 @@ body {
 }
 
 .box {
-  background-color: #C6B0F1;
+  background-color: #c6b0f1;
   border-radius: 10px;
   font-family: 'Verdana', sans-serif;
   font-size: 100%; 
