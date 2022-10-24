@@ -2,7 +2,7 @@
  
  Схема работы чат бота:
 
-![Схема](.git/diagram3.png)
+![Схема](docs/diagram3.png)
 
 Документация(на данный момент: [URL](http://localhost:9191/ws/docs)
 
